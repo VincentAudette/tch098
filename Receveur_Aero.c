@@ -7,7 +7,7 @@
 
 
 // Programme d'initiation :
-//Ce programme reçoit des strings envoyer du controlleur et l'
+//Ce programme reÃ§oit des strings envoyer du controlleur et l'
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -42,10 +42,10 @@ int main(void)
 	uint8_t sustentation=0;
 	
 	
-	DDRD = clear_bit(DDRD, PD3); // Mettre la broche du bouton du joystick en entrée
+	DDRD = clear_bit(DDRD, PD3); // Mettre la broche du bouton du joystick en entrÃ©e
 	
 	PORTD = set_bit(PORTD, PD3); /* On doit activer la "pull-up" interne de la broche pour
-	forcer un état haut quand le bouton n'est pas enfoncé*/
+	forcer un Ã©tat haut quand le bouton n'est pas enfoncÃ©*/
 	
 	DDRB = set_bits(DDRB, 0b00011111); /* Mettre les cinq premiers bits du port des DELs en
 	en sortie */
@@ -61,22 +61,22 @@ int main(void)
 
 	//RECEIVEUR
 	
-	// Calibration de la fréquence du microcontrôleur
+	// Calibration de la frÃ©quence du microcontrÃ´leur
 	
 		OSCCAL += 10;
 	
-	// Configurer la broche de RESET de l’ESP8266 en sortie
+	// Configurer la broche de RESET de lâ€™ESP8266 en sortie
 	
 		DDRD = set_bit(DDRD, PD2);
 	
-	// Faire un reset de l’ESP8266 en mettant la broche de sortie à 0 
-	//puis faire un délai de 500ms.
+	// Faire un reset de lâ€™ESP8266 en mettant la broche de sortie Ã  0 
+	//puis faire un dÃ©lai de 500ms.
 	
 		PORTD = clear_bit(PORTD, PD2);
 		_delay_ms(500);
 	
-	// Redémarrer l’ESP8266 en arrêtant de faire un reset, c’est-à-dire 
-	// en mettant la broche de sortie à 1 puis faire un délai d’au moins 5 secondes.
+	// RedÃ©marrer lâ€™ESP8266 en arrÃªtant de faire un reset, câ€™est-Ã -dire 
+	// en mettant la broche de sortie Ã  1 puis faire un dÃ©lai dâ€™au moins 5 secondes.
 	
 		PORTD = set_bit(PORTD, PD2);
 		_delay_ms(1000);
@@ -86,14 +86,14 @@ int main(void)
 		_delay_ms(1000);
 	
 	// Envoyer la commande pour le mode Passthrough, attendre que la commande soit 
-	// complètement envoyée puis faire un délai de 250ms.
+	// complÃ¨tement envoyÃ©e puis faire un dÃ©lai de 250ms.
 	
 		uart_put_string("AT+CIPMODE=1\r\n");
 		uart_flush();
 		_delay_ms(250);
 	
-	// Envoyer la commande pour établir la transmission UDP, attendre que la commande
-	// soit complètement envoyée puis faire un délai de 250ms.
+	// Envoyer la commande pour Ã©tablir la transmission UDP, attendre que la commande
+	// soit complÃ¨tement envoyÃ©e puis faire un dÃ©lai de 250ms.
 	
 		uart_put_string("AT+CIPSTART=\"UDP\",\"0.0.0.0\",123,100\r\n");
 		uart_flush();
@@ -109,71 +109,71 @@ int main(void)
 	
 			switch(comp)
 			{
-				// Déclaration du premier byte envoyé dans le string
+				// DÃ©claration du premier byte envoyÃ© dans le string
 				case PREMIER_BIT:
 					if(mon_byte == '['){
 						comp++;
 					}
 				break;
 		
-				//Premier byte Horizontal envoyé
+				//Premier byte Horizontal envoyÃ©
 				case HORIZONTAL_BIT_1:
 				hor[0]=mon_byte;
 				comp++;
 				break;
 				
-				//Deuxième byte Horizontal envoyé
+				//DeuxiÃ¨me byte Horizontal envoyÃ©
 				case HORIZONTAL_BIT_2:
 				hor[1]=mon_byte;
 				comp++;
 				break;
 				
-				//Troisième byte Horizontal envoyé
+				//TroisiÃ¨me byte Horizontal envoyÃ©
 				case HORIZONTAL_BIT_3:
 				hor[2]=mon_byte;
 				hor[3]='\0';
 				comp++;
 				break;
 			
-				//Premier byte Vertical envoyé
+				//Premier byte Vertical envoyÃ©
 				case VERTICAL_BIT_1:
 				ver[0]=mon_byte;
 				comp++;
 				break;
 				
-				//Deuxième byte Vertical envoyé
+				//DeuxiÃ¨me byte Vertical envoyÃ©
 				case VERTICAL_BIT_2:
 				ver[1]=mon_byte;
 				comp++;
 				break;
 				
-				//Troisième byte Vertical envoyé
+				//TroisiÃ¨me byte Vertical envoyÃ©
 				case VERTICAL_BIT_3:
 				ver[2]=mon_byte;
 				ver[3]='\0';
 				comp++;
 				break;
 				
-				//Premier byte Sustentation envoyé
+				//Premier byte Sustentation envoyÃ©
 				case SUSTENTATION_BIT_1:
 				sus[0]=mon_byte;
 				comp++;
 				break;
 								
-				//Deuxième byte Sustentation envoyé
+				//DeuxiÃ¨me byte Sustentation envoyÃ©
 				case SUSTENTATION_BIT_2:
 				sus[1]=mon_byte;
 				comp++;
 				break;
 								
-				//Troisième byte Sustentation envoyé
+				//TroisiÃ¨me byte Sustentation envoyÃ©
 				case SUSTENTATION_BIT_3:
 				sus[2]=mon_byte;
 				sus[3]='\0';
 				comp++;
 				break;
 				
-				// Déclaration du dernier bit envoyé dans le string
+				// DÃ©claration du dernier bit envoyÃ© dans le string
 				case DERNIER_BIT:
 				if(mon_byte == ']'){
 					//end string received
