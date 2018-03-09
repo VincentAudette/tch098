@@ -1,11 +1,11 @@
 /**
 	Programme du controleur d'un aéroglisseur
 	author *********************************************************
-	author ***             VINCENT AUDETTE						  ***
-	author ***           	FELIX CANTIN		                  ***
-	author ***            JEROME GRENIER						  ***
-	author ***             GABRIEL TREMBLAY                       ***
-	author ***				IKRAM KOULMI					      ***
+	author ***             VINCENT AUDETTE			     ***
+	author ***           	FELIX CANTIN		             ***
+	author ***            JEROME GRENIER		             ***
+	author ***             GABRIEL TREMBLAY                      ***
+	author ***	        IKRAM KOULMI	   		     ***
 	author *********************************************************
 	date 2018-02-01
 */
