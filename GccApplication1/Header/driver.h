@@ -6,7 +6,7 @@
 	|_   |  (_
 	|__  |  __)
 	MIT License
-	Copyright (c) 2018	École de technologie supérieure
+	Copyright (c) 2018	Ã‰cole de technologie supÃ©rieure
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
 	in the Software without restriction, including without limitation the rights
@@ -17,7 +17,7 @@
 */
 /**
 	\file
-	\brief Header de fonctions qui pilotent directement du matériel
+	\brief Header de fonctions qui pilotent directement du matÃ©riel
 	\author Iouri Savard Colbert
 	\date 24 janvier 2018
 */
@@ -36,8 +36,8 @@ Prototypes
     \brief Initialise le module de l'ADC
     \return rien.
 	Le module de l'ADC utilise le PORT A. Cependant, les 3 derniers bits du PORT A
-	sont utilisés pour faire fonctionner l'écran LCD. Il est donc possible d'utiliser la broche
-	PA0 à PA4 inclusivement ce qui correspond respectivement aux broches 40 à 36 du DIP.
+	sont utilisÃ©s pour faire fonctionner l'Ã©cran LCD. Il est donc possible d'utiliser la broche
+	PA0 Ã  PA4 inclusivement ce qui correspond respectivement aux broches 40 Ã  36 du DIP.
 			    +---- ----+
 			  --| 1  U 40 |-- ADC 0
 			  --| 2    39 |-- ADC 1
@@ -65,24 +65,24 @@ void adc_init(void);
 
 
 /**
-    \brief Fait une conversion de la valeur analogique présente sur une entrée
-    \param[in]	channel	Le channel sur lequel la conversion doit être effectuée (entre PA0 et PA4 inclusivement)
+    \brief Fait une conversion de la valeur analogique prÃ©sente sur une entrÃ©e
+    \param[in]	channel	Le channel sur lequel la conversion doit Ãªtre effectuÃ©e (entre PA0 et PA4 inclusivement)
     \return La valeur convertie.
-	C'est une erreur d'appeler cette fonction avec un channel négatif ou plus grand que 4
-	Il est important de noter que cette fonction ne s'exécute pas instantanément. La conversion
-	prend un certain temps à s'effectuer et la fonction attend la fin de la conversion avant de
-	retourner. C'est une mauvaise idée d'appeler cette fonction dans une boucle avec des temps
+	C'est une erreur d'appeler cette fonction avec un channel nÃ©gatif ou plus grand que 4
+	Il est important de noter que cette fonction ne s'exÃ©cute pas instantanÃ©ment. La conversion
+	prend un certain temps Ã  s'effectuer et la fonction attend la fin de la conversion avant de
+	retourner. C'est une mauvaise idÃ©e d'appeler cette fonction dans une boucle avec des temps
 	critiques.
 */
 uint8_t adc_read(uint8_t channel);
 
 
 /**
-    \brief Initialise le module de contrôle des servomoteurs
+    \brief Initialise le module de contrÃ´le des servomoteurs
     \return rien.
-	Le module de contrôle des servomoteurs utilise le timer 1.
-	Servo A correspond à la broche PD5 du microcontrôleur ce qui correspond à la broche 19 du DIP.
-	Servo B correspond à la broche PD4 du microcontrôleur ce qui correspond à la broche 18 du DIP.
+	Le module de contrÃ´le des servomoteurs utilise le timer 1.
+	Servo A correspond Ã  la broche PD5 du microcontrÃ´leur ce qui correspond Ã  la broche 19 du DIP.
+	Servo B correspond Ã  la broche PD4 du microcontrÃ´leur ce qui correspond Ã  la broche 18 du DIP.
 			    +---- ----+
 			  --| 1  U 40 |--
 			  --| 2    39 |--
@@ -109,35 +109,35 @@ uint8_t adc_read(uint8_t channel);
 void servo_init(void);
 
 /**
-    \brief Applique la bonne impulsion à la sortie du servomoteur A pour lui donner un angle particulier
+    \brief Applique la bonne impulsion Ã  la sortie du servomoteur A pour lui donner un angle particulier
 	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
-	La valeur de l'angle qui est passée en paramètre n'a aucune relation avec une grandeur physique
-	définie (degré, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule règle qui est attendue
+	La valeur de l'angle qui est passÃ©e en paramÃ¨tre n'a aucune relation avec une grandeur physique
+	dÃ©finie (degrÃ©, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule rÃ¨gle qui est attendue
 	c'est que le plus petit angle soit obtenu avec 0, le plus grand avec 255 et avec 127 le servomoteur
-	devrait être droit.
+	devrait Ãªtre droit.
 */
 void servo_set_a(uint8_t angle);
 
 /**
-    \brief Applique la bonne impulsion à la sortie du servomoteur B pour lui donner un angle particulier
+    \brief Applique la bonne impulsion Ã  la sortie du servomoteur B pour lui donner un angle particulier
 	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
-	La valeur de l'angle qui est passé en paramètre n'a aucune relation avec une grandeur physique
-	définie (degré, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule règle qui est attendue
+	La valeur de l'angle qui est passÃ© en paramÃ¨tre n'a aucune relation avec une grandeur physique
+	dÃ©finie (degrÃ©, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule rÃ¨gle qui est attendue
 	c'est que le plus petit angle soit obtenu avec 0, le plus grand avec 255 et avec 127 le servomoteur
-	devrait être droit.
+	devrait Ãªtre droit.
 */
 void servo_set_b(uint8_t angle);
 
 /**
     \brief Initialise les modules de PWM
-    \param init_a Si == TRUE, le PWM A est initialisé
-    \param init_b Si == TRUE, le PWM B est initialisé
+    \param init_a Si == TRUE, le PWM A est initialisÃ©
+    \param init_b Si == TRUE, le PWM B est initialisÃ©
     \return rien.
-	Le PWM A correspond au timer 0. Le timer 0 utilise la broche PB3 du microcontrôleur
-	ce qui correspond à la broche 4 du DIP. Le PWM B correspond au timer 2. Le timer 2
-	utilise la broche PD7 du microcontrôleur ce qui correspond à la broche 21 du DIP.
+	Le PWM A correspond au timer 0. Le timer 0 utilise la broche PB3 du microcontrÃ´leur
+	ce qui correspond Ã  la broche 4 du DIP. Le PWM B correspond au timer 2. Le timer 2
+	utilise la broche PD7 du microcontrÃ´leur ce qui correspond Ã  la broche 21 du DIP.
 			    +---- ----+
 			  --| 1  U 40 |--
 			  --| 2    39 |--
@@ -164,20 +164,20 @@ void servo_set_b(uint8_t angle);
 void pwm_init(bool init_a, bool init_b);
 
 /**
-    \brief Applique un PWM à la sortie PWM A (broche 4 du DIP)
+    \brief Applique un PWM Ã  la sortie PWM A (broche 4 du DIP)
 	\param[in]	duty Une valeur entre 0 et 255
     \return rien.
-	Un duty (rapport cyclique) de 0 correspond à un PWM de 0% et un duty de 255 correspond à un
-	PWM de 100%. Cette relation est linéaire sur toute l'intervalle.
+	Un duty (rapport cyclique) de 0 correspond Ã  un PWM de 0% et un duty de 255 correspond Ã  un
+	PWM de 100%. Cette relation est linÃ©aire sur toute l'intervalle.
 */
 void pwm_set_a(uint8_t duty);
 
 /**
-    \brief Applique un PWM à la sortie PWM B (broche 21 du DIP)
+    \brief Applique un PWM Ã  la sortie PWM B (broche 21 du DIP)
 	\param[in]	duty Une valeur entre 0 et 255
     \return rien.
-	Un duty (rapport cyclique) de 0 correspond à un PWM de 0% et un duty de 255 correspond à un
-	PWM de 100%. Cette relation est linéaire sur toute l'intervalle.
+	Un duty (rapport cyclique) de 0 correspond Ã  un PWM de 0% et un duty de 255 correspond Ã  un
+	PWM de 100%. Cette relation est linÃ©aire sur toute l'intervalle.
 */
 void pwm_set_b(uint8_t duty);
 
@@ -188,8 +188,8 @@ void pwm_set_b(uint8_t duty);
 void joystick_button_init(void);
 
 /**
-    \brief Retourne l'état du joystick
-    \return TRUE si enfoncé, FALSE si relâché
+    \brief Retourne l'Ã©tat du joystick
+    \return TRUE si enfoncÃ©, FALSE si relÃ¢chÃ©
 */
 bool joystick_button_read(void);
 
