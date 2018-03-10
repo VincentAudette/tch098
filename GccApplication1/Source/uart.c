@@ -6,9 +6,9 @@
     This Source Code is the Property of Roxaudio inc. and can only be
     used in accordance with Roxaudio's Source Code License Agreement.
 	\file uart.c
-	\brief Gère la communication bidirectionelle avec le port série
+	\brief GÃ¨re la communication bidirectionelle avec le port sÃ©rie
 	\author Iouri Savard Colbert
-	\date 13 Mars 2012 - Date de création
+	\date 13 Mars 2012 - Date de crÃ©ation
 	\date 16 Septembre 2012 - Ajout du support de UART 1
 */
 
@@ -91,8 +91,8 @@ Interupts
 ******************************************************************************/
 
 /**
-    \brief interupt quand le data register (UDRE) est prêt à recevoir d'autres
-    données pour UART 0
+    \brief interupt quand le data register (UDRE) est prÃªt Ã  recevoir d'autres
+    donnÃ©es pour UART 0
 */
 ISR(USART_UDRE_vect){
 
@@ -105,7 +105,7 @@ ISR(USART_UDRE_vect){
 }
 
 /**
-    \brief interupt quand le data register (UDR) a reçu une nouvelle donnée
+    \brief interupt quand le data register (UDR) a reÃ§u une nouvelle donnÃ©e
     pour UART 0
 */
 ISR(USART_RXC_vect){
@@ -122,7 +122,7 @@ Global functions
 void uart_init(void){
 
     /* configure asynchronous operation, no parity, 1 stop bit, 8 data bits,  */
-    UCSRC = (	(1 << URSEL) |	/*Doit absolument être a 1 pour écrire le registe UCSRC (gros caca d'ATmega32) */
+    UCSRC = (	(1 << URSEL) |	/*Doit absolument Ãªtre a 1 pour Ã©crire le registe UCSRC (gros caca d'ATmega32) */
                 (0 << UMSEL) |	/*USART Mode Select : Asynchronous USART*/
                 (0 << UPM1) |	/*Parity Mode : No parity*/
                 (0 << UPM0) |   /*Parity Mode : No parity*/
@@ -151,7 +151,7 @@ void uart_init(void){
 
 
 /*** uart_set_baudrate ***/
-/// \todo (iouri#1#): implémenter qqch qui empêche la corruption de la transmission.  La mise à jour de UBRR est immédiate.  Voir doc p. 196
+/// \todo (iouri#1#): implÃ©menter qqch qui empÃªche la corruption de la transmission.  La mise Ã  jour de UBRR est immÃ©diate.  Voir doc p. 196
 void uart_set_baudrate(baudrate_e baudrate){
 
     UBRRL = (uint8_t)(baudrate_to_UBRR[baudrate] & 0xFF);
@@ -163,14 +163,14 @@ void uart_set_baudrate(baudrate_e baudrate){
 /*** uart_put_byte ***/
 void uart_put_byte(uint8_t byte){
 
-    //on commence par désactiver l'interuption pour éviter que celle-ci
-    //se produise pendant qu'on ajoute un caractère au buffer
+    //on commence par dÃ©sactiver l'interuption pour Ã©viter que celle-ci
+    //se produise pendant qu'on ajoute un caractÃ¨re au buffer
     disable_UDRE_interupt();
 
     fifo_push(&tx_fifo, byte);
 
-    // On active l'interrupt après avoir incrémenté le pointeur
-    // d'entré pour éviter un dead lock assez casse-tête
+    // On active l'interrupt aprÃ¨s avoir incrÃ©mentÃ© le pointeur
+    // d'entrÃ© pour Ã©viter un dead lock assez casse-tÃªte
     enable_UDRE_interupt();
 
 }
@@ -185,8 +185,8 @@ void uart_put_string(char* string){
 		
 		while(fifo_is_full(&tx_fifo)  == TRUE);
 		
-		//on commence par désactiver l'interuption pour éviter que celle-ci
-		//se produise pendant qu'on ajoute un caractère au buffer
+		//on commence par dÃ©sactiver l'interuption pour Ã©viter que celle-ci
+		//se produise pendant qu'on ajoute un caractÃ¨re au buffer
 		disable_UDRE_interupt();
 		
 		while((string[i] != '\0') && (fifo_is_full(&tx_fifo)  == FALSE)){
@@ -196,8 +196,8 @@ void uart_put_string(char* string){
 			i++;
 		}
 
-		// On active l'interrupt après avoir incrémenté le pointeur
-		// d'entré pour éviter un dead lock assez casse-tête
+		// On active l'interrupt aprÃ¨s avoir incrÃ©mentÃ© le pointeur
+		// d'entrÃ© pour Ã©viter un dead lock assez casse-tÃªte
 		enable_UDRE_interupt();
 
 	}
@@ -236,7 +236,7 @@ void uart_get_string(char* out_buffer, uint8_t buffer_length){
 	}
 	
 	
-	// Très temporaire pour déboguer
+	// TrÃ¨s temporaire pour dÃ©boguer
 	if(index == 0){
 		
 		string_copy(out_buffer, "-vide-");
