@@ -6,7 +6,7 @@
     This Source Code is the Property of Roxaudio inc. and can only be
     used in accordance with Roxaudio's Source Code License Agreement.
 	\file utils.c
-	\brief Header de fonctions utiles à tout projet
+	\brief Header de fonctions utiles Ã  tout projet
 	\author Iouri Savard Colbert
 	\date 13 Mars 2012
 */
@@ -196,9 +196,9 @@ char uint_to_hex_char(uint8_t hex_digit){
 
 uint8_t uint8_to_string(char* out_string, uint8_t number){
 
-    uint8_t anti_rest;  //après avoir fixé mon écran dans le vide pendant 15 minutes à chercher
-    // un nom intelligent pour cette variable j'ai décidé de passer à l'action et de lui donner
-    // le premier nom qui me passerait par la tête.
+    uint8_t anti_rest;  //aprÃ¨s avoir fixÃ© mon Ã©cran dans le vide pendant 15 minutes Ã  chercher
+    // un nom intelligent pour cette variable j'ai dÃ©cidÃ© de passer Ã  l'action et de lui donner
+    // le premier nom qui me passerait par la tÃªte.
     uint8_t string_index = 0;
     uint8_t power_of_ten = 100;
 
@@ -225,9 +225,9 @@ uint8_t uint8_to_string(char* out_string, uint8_t number){
 
 uint8_t uint16_to_string(char* out_string, uint16_t number){
 
-    uint8_t anti_rest;  //après avoir fixé mon écran dans le vide pendant 15 minutes à chercher
-    // un nom intelligetn pour cette variable j'ai décidé de passer à l'action et de lui donner
-    // le premier nom qui me passerait par la tête.
+    uint8_t anti_rest;  //aprÃ¨s avoir fixÃ© mon Ã©cran dans le vide pendant 15 minutes Ã  chercher
+    // un nom intelligetn pour cette variable j'ai dÃ©cidÃ© de passer Ã  l'action et de lui donner
+    // le premier nom qui me passerait par la tÃªte.
     uint8_t string_index = 0;
     uint16_t power_of_ten = 10000;
 
@@ -254,9 +254,9 @@ uint8_t uint16_to_string(char* out_string, uint16_t number){
 
 uint8_t uint32_to_string(char* out_string, uint32_t number){
 
-    uint8_t anti_rest;  //après avoir fixé mon écran dans le vide pendant 15 minutes à chercher
-    // un nom intelligetn pour cette variable j'ai décidé de passer à l'action et de lui donner
-    // le premier nom qui me passerait par la tête.
+    uint8_t anti_rest;  //aprÃ¨s avoir fixÃ© mon Ã©cran dans le vide pendant 15 minutes Ã  chercher
+    // un nom intelligetn pour cette variable j'ai dÃ©cidÃ© de passer Ã  l'action et de lui donner
+    // le premier nom qui me passerait par la tÃªte.
     uint8_t string_index = 0;
     uint32_t power_of_ten = 1000000000;
 
@@ -321,7 +321,7 @@ uint8_t uint32_to_hex_string(char* out_string, uint32_t number){
 
 uint8_t int8_to_string(char* out_string, int8_t number){
 
-    /* Détermination du signe */
+    /* DÃ©termination du signe */
     if(number < 0){
 
         out_string[0] = '-';
@@ -331,7 +331,7 @@ uint8_t int8_to_string(char* out_string, int8_t number){
         out_string[0] = '+';
     }
 
-    /* Une fois que le signe est sorti, reste juste à convertir la valeur absolue du reste */
+    /* Une fois que le signe est sorti, reste juste Ã  convertir la valeur absolue du reste */
 	// Le +1 c'est pour tenir compte du signe
     return uint8_to_string(&out_string[1], (uint8_t)abs(number)) + 1;
 }
@@ -339,7 +339,7 @@ uint8_t int8_to_string(char* out_string, int8_t number){
 
 uint8_t int16_to_string(char* out_string, int16_t number){
 
-    /* Détermination du signe */
+    /* DÃ©termination du signe */
     if(number < 0){
 
         out_string[0] = '-';
@@ -349,7 +349,7 @@ uint8_t int16_to_string(char* out_string, int16_t number){
         out_string[0] = '+';
     }
 
-    /* Une fois que le signe est sorti, reste juste à convertir la valeur absolue du reste */
+    /* Une fois que le signe est sorti, reste juste Ã  convertir la valeur absolue du reste */
 	// Le +1 c'est pour tenir compte du signe
     return uint16_to_string(&out_string[1], (uint16_t)abs(number)) + 1;
 
@@ -358,7 +358,7 @@ uint8_t int16_to_string(char* out_string, int16_t number){
 
 uint8_t int32_to_string(char* out_string, int32_t number){
 
-    /* Détermination du signe */
+    /* DÃ©termination du signe */
     if(number < 0){
 
         out_string[0] = '-';
@@ -368,7 +368,7 @@ uint8_t int32_to_string(char* out_string, int32_t number){
         out_string[0] = '+';
     }
 
-    /* Une fois que le signe est sorti, reste juste à convertir la valeur absolue du reste */
+    /* Une fois que le signe est sorti, reste juste Ã  convertir la valeur absolue du reste */
 	// Le +1 c'est pour tenir compte du signe
     return uint32_to_string(&out_string[1], (uint32_t)abs(number)) + 1;
 
