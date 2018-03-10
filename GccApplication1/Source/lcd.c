@@ -6,7 +6,7 @@
     This Source Code is the Property of Roxaudio inc. and can only be
     used in accordance with Roxaudio's Source Code License Agreement.
 	\file lcd.c
-	\brief driver pour un affichage LCD pilotÈ par un HD44780
+	\brief driver pour un affichage LCD pilot√© par un HD44780
 	\author Iouri Savard Colbert
 	\date 28 avril 2014
 */
@@ -81,7 +81,7 @@ Global functions HD44780
 
 void hd44780_init(bool increment, bool cursor, bool blink){
 
-    //On dÈfinie la valeur par dÈfaut des ports
+    //On d√©finie la valeur par d√©faut des ports
     DATA_PORT = FUNCTION_SET;
     CTRL_PORT = clear_bit(CTRL_PORT, RS_PIN);   //command mode
     CTRL_PORT = clear_bit(CTRL_PORT, RW_PIN);   //write mode
@@ -127,8 +127,8 @@ void hd44780_clear_display(){
 
     clock_data(0b00000001);     //Clear Display
 	
-	// Cette information n'est nulle part dans la datasheet, mais a plutÙt ÈtÈ trouvÈe
-	// par essaie erreur. Une bonne solution pour rÈgler le problËme sera de relire le busy
+	// Cette information n'est nulle part dans la datasheet, mais a plut√¥t √©t√© trouv√©e
+	// par essaie erreur. Une bonne solution pour r√©gler le probl√®me sera de relire le busy
 	// flag
 	_delay_ms(2);
 
@@ -253,85 +253,85 @@ void hd44780_write_char(char character){
     else{
 		
 		switch(character){
-		case 0xC0:	//¿
+		case 0xC0:	//√Ä
 		case 0xC1:	//A accent aigue
-		case 0xC2:	//¬
+		case 0xC2:	//√Ç
 		case 0xC3:	//A ???
-		case 0xC4:	//ƒ
+		case 0xC4:	//√Ñ
 			character = 'A';
 			break;
 					
-		case 0xC7:	//«
+		case 0xC7:	//√á
 			character = 'C';
 			break;
 					
-		case 0xC8:	//»
-		case 0xC9:	//…
-		case 0xCA:	// 
-		case 0xCB:	//À
+		case 0xC8:	//√à
+		case 0xC9:	//√â
+		case 0xCA:	//√ä
+		case 0xCB:	//√ã
 			character = 'E';
 			break;
 					
-		case 0xCC:	//Ã
+		case 0xCC:	//√å
 		case 0xCD:	//I accent aigue
-		case 0xCE:	//Œ
-		case 0xCF:	//œ
+		case 0xCE:	//√é
+		case 0xCF:	//√è
 			character = 'I';
 			break;
 					
-		case 0xD2:	//“
+		case 0xD2:	//√í
 		case 0xD3:	//O accent aigue
-		case 0xD4:	//‘
+		case 0xD4:	//√î
 		case 0xD5:	//O ???
-		case 0xD6:	//÷
+		case 0xD6:	//√ñ
 			character = 'O';
 			break;
 					
-		case 0xD9:	//Ÿ
+		case 0xD9:	//√ô
 		case 0xDA:	//U accent aigue
-		case 0xDB:	//€
-		case 0xDC:	//‹
+		case 0xDB:	//√õ
+		case 0xDC:	//√ú
 			character = 'U';
 			break;
 					
-		case 0xE0:	//‡
+		case 0xE0:	//√†
 		case 0xE1:	//a accent aigue
-		case 0xE2:	//‚
+		case 0xE2:	//√¢
 		case 0xE3:	//a ???
-		case 0xE4:	//‰
+		case 0xE4:	//√§
 			character = 'a';
 			break;
 		
-		case 0xE7:	//Á
+		case 0xE7:	//√ß
 			character = 'c';
 			break;
 			
-		case 0xE8:	//Ë
-		case 0xE9:	//È
-		case 0xEA:	//Í
-		case 0xEB:	//Î
+		case 0xE8:	//√®
+		case 0xE9:	//√©
+		case 0xEA:	//√™
+		case 0xEB:	//√´
 			character = 'e';
 			break;
 			
-		case 0xEC:	//Ï
+		case 0xEC:	//√¨
 		case 0xED:	//i accent aigue
-		case 0xEE:	//Ó
-		case 0xEF:	//Ô
+		case 0xEE:	//√Æ
+		case 0xEF:	//√Ø
 			character = 'i';
 			break;
 			
-		case 0xF2:	//Ú
+		case 0xF2:	//√≤
 		case 0xF3:	//o accent aigue
-		case 0xF4:	//Ù
+		case 0xF4:	//√¥
 		case 0xF5:	//o ???
-		case 0xF6:	//ˆ
+		case 0xF6:	//√∂
 			character = 'o';
 			break;
 			
-		case 0xF9:	//˘
+		case 0xF9:	//√π
 		case 0xFA:	//u accent aigue
-		case 0xFB:	//˚
-		case 0xFC:	//¸
+		case 0xFB:	//√ª
+		case 0xFC:	//√º
 			character = 'u';
 			break;
 		
@@ -397,7 +397,7 @@ void lcd_shift_cursor(lcd_shift_e shift){
 		// Si on est sur la ligne du haut
         if(index_to_row(local_index) <= 0){
 
-			// On se rend ‡ la fin moins une ligne
+			// On se rend √† la fin moins une ligne
             local_index += (MAX_INDEX - LCD_NB_COL);
 			
 			clear_required_flag = TRUE;
@@ -413,10 +413,10 @@ void lcd_shift_cursor(lcd_shift_e shift){
 
     case LCD_SHIFT_DOWN:
 
-		// Si on est rendu ‡ la derniËre ligne
+		// Si on est rendu √† la derni√®re ligne
         if(index_to_row(local_index) >= LCD_NB_ROW - 1){
 
-			// On ne garde que le numÈro de colone (donc sa ramËne sur la premiËre ligne)
+			// On ne garde que le num√©ro de colone (donc sa ram√®ne sur la premi√®re ligne)
             local_index %= LCD_NB_COL;
 			
 			clear_required_flag = TRUE;
@@ -444,14 +444,14 @@ void lcd_shift_cursor(lcd_shift_e shift){
 		
 	case LCD_SHIFT_TOP:
 	
-		// On ne garde que le numÈro de colone (donc sa ramËne sur la premiËre ligne)
+		// On ne garde que le num√©ro de colone (donc sa ram√®ne sur la premi√®re ligne)
 		local_index %= LCD_NB_COL;
 		
 		break;
 		
 	case LCD_SHIFT_BOTTOM:
 		
-		// On se rend ‡ la fin moins une ligne
+		// On se rend √† la fin moins une ligne
 		local_index += (MAX_INDEX - LCD_NB_COL);
 		
 		break;
@@ -465,8 +465,8 @@ void lcd_write_char(char character){
 
     bool unsynced;
 	
-	// Si il s'agit d'un des 32 premier caractËres ascii, on s'attend ‡ un contrÙle
-	// plutÙt que l'affichage d'un caractËre
+	// Si il s'agit d'un des 32 premier caract√®res ascii, on s'attend √† un contr√¥le
+	// plut√¥t que l'affichage d'un caract√®re
 	if(character < ' '){
 		
 		switch (character){
@@ -565,7 +565,7 @@ void text_write_char(char character){
 
     local_index_backup++;
 
-    /* Si le curseur est passÈ la derniËre position */
+    /* Si le curseur est pass√© la derni√®re position */
     if(local_index_backup >= MAX_INDEX){
 
         text_line_break();
@@ -586,12 +586,12 @@ void text_line_break(void){
 
     uint8_t i;
 
-    /* Si le curseur est sur la derniËre ligne ou mÍme sur la troisiËme ligne virtuelle */
+    /* Si le curseur est sur la derni√®re ligne ou m√™me sur la troisi√®me ligne virtuelle */
     if(index_to_row(local_index) >= LCD_NB_ROW - 1){
 
         local_index_backup = local_index;
 
-        /* On commence par supprimer la premiËre ligne */
+        /* On commence par supprimer la premi√®re ligne */
         remove(0, LCD_NB_COL);
 
         set_cursor_index(local_index_backup - LCD_NB_COL);
@@ -629,14 +629,14 @@ void text_del_last_char(void){
         length++;
     }
 
-    /* Si aucun sauts de lignes n'ont ÈtÈ dÈcouverts */
+    /* Si aucun sauts de lignes n'ont √©t√© d√©couverts */
     if(local_index_backup == local_index){
 
-        /* Il faut quand mÍme supprimer un caractËre */
+        /* Il faut quand m√™me supprimer un caract√®re */
         local_index--;
     }
 
-    /* On met ‡ jour notre rÈfÈrence */
+    /* On met √† jour notre r√©f√©rence */
     local_index_backup = local_index;
 
     remove(local_index, length);
@@ -741,7 +741,7 @@ bool shift_local_index(bool foward){
     /* Si on est dans le sens foward */
     if(foward == TRUE){
 
-        /* Si on est ‡ la fin */
+        /* Si on est √† la fin */
         if(local_index >= MAX_INDEX - 1){
 
 			local_index = 0;
@@ -753,10 +753,10 @@ bool shift_local_index(bool foward){
         }
     }
 
-    /* Si on est dans le sens dÈcrÈmental foward ou incrÈmental backward*/
+    /* Si on est dans le sens d√©cr√©mental foward ou incr√©mental backward*/
     else{
 
-        /* Si on est au dÈbut */
+        /* Si on est au d√©but */
         if(local_index <= 0){
 			
             local_index = MAX_INDEX - 1;
@@ -768,8 +768,8 @@ bool shift_local_index(bool foward){
         }
     }
 
-    /* Si la row actuelle ne correspond pas ‡ l'ancienne il va falloir manuellement
-    dÈplacer le curseur */
+    /* Si la row actuelle ne correspond pas √† l'ancienne il va falloir manuellement
+    d√©placer le curseur */
     return (previous_row != index_to_row(local_index));
 }
 
@@ -789,8 +789,8 @@ void set_cursor_index(uint8_t index){
 
 void insert(uint8_t index, const char* char_array, uint8_t length){
 
-    /* TrËs exceptionellement, le type doit Ítre signÈ pour empÍcher la derniËre
-    boucle for de spinner ‡ l'infini */
+    /* Tr√®s exceptionellement, le type doit √™tre sign√© pour emp√™cher la derni√®re
+    boucle for de spinner √† l'infini */
     int8_t i;
 
     if(index + length < MAX_INDEX){
@@ -801,13 +801,13 @@ void insert(uint8_t index, const char* char_array, uint8_t length){
 
         for(i = (MAX_INDEX - 1); i >= index; i--){
 
-            /* DÈcalage des caractËres */
+            /* D√©calage des caract√®res */
             if(i >= index + length){
 
                 local_data_array[i] = local_data_array[i - length];
             }
 
-            /* Insertion des nouveaux caractËres */
+            /* Insertion des nouveaux caract√®res */
             else{
 
                 local_data_array[i] = char_array[i - index];
@@ -827,7 +827,7 @@ void remove(uint8_t index, uint8_t length){
 
     set_cursor_index(index);
 
-    /* DÈcalage des caractËres */
+    /* D√©calage des caract√®res */
     for(i = index; i < MAX_INDEX; i++){
 
         if(i < MAX_INDEX - length){
