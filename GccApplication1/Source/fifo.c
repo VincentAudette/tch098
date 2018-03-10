@@ -6,9 +6,9 @@
     This Source Code is the Property of Roxaudio inc. and can only be
     used in accordance with Roxaudio's Source Code License Agreement.
 	@file fifo.c
-	@brief Module qui implémente un fifo à longueur statiquement variable
+	@brief Module qui implÃ©mente un fifo Ã  longueur statiquement variable
 	@author Iouri Savard Colbert
-	@date 16 septembre 2012 - Création du module
+	@date 16 septembre 2012 - CrÃ©ation du module
 */
 
 /******************************************************************************
@@ -52,7 +52,7 @@ void fifo_push(fifo_t* fifo, uint8_t value){
             fifo->in_offset++;
         }
 
-        /* si l'index de d'entrée ratrappe celui de sortie c'est que le buffer est plein */
+        /* si l'index de d'entrÃ©e ratrappe celui de sortie c'est que le buffer est plein */
         if(fifo->in_offset == fifo->out_offset){
 
             fifo->is_full = TRUE;
@@ -82,7 +82,7 @@ uint8_t fifo_pop(fifo_t* fifo){
             fifo->out_offset++;
         }
 
-        /* si l'index de sortie ratrappe celui d'entrée c'est que le buffer est vide */
+        /* si l'index de sortie ratrappe celui d'entrÃ©e c'est que le buffer est vide */
         if(fifo->out_offset == fifo->in_offset){
 
             fifo->is_empty = TRUE;
@@ -91,8 +91,8 @@ uint8_t fifo_pop(fifo_t* fifo){
 
     else{
 
-        /* En orienté objet je ferais une exception, mais en c le mieux que je peux faire
-        c'est ça */
+        /* En orientÃ© objet je ferais une exception, mais en c le mieux que je peux faire
+        c'est Ã§a */
         value = 0;
     }
 
