@@ -9,9 +9,9 @@
     This Source Code is the Property of Roxaudio inc. and can only be
     used in accordance with Roxaudio's Source Code License Agreement.
 	@file fifo.h
-	@brief Module qui implémente un fifo à longueur statiquement variable
+	@brief Module qui implÃ©mente un fifo Ã  longueur statiquement variable
 	@author Iouri Savard Colbert
-	@date 16 septembre 2012 - Création du module
+	@date 16 septembre 2012 - CrÃ©ation du module
 */
 
 /******************************************************************************
